@@ -1,0 +1,41 @@
+# ============================================================
+# Fish Vitality Monitoring - 開發 / 訓練依賴
+# ============================================================
+# 本檔案包含推論所需的全部依賴 (繼承 requirements.txt)，
+# 加上重新訓練模型所需的額外套件。
+#
+# 推論階段只需裝 requirements.txt 即可；只有需要重新訓練
+# detector / association head / vitality classifier 時才需裝本檔案。
+# ============================================================
+
+-r requirements.txt
+
+# --- Training framework (RF-DETR 內部使用) ---
+pytorch_lightning==2.6.5
+torchmetrics==1.9.0
+
+# --- 訓練資料增強 ---
+albumentations==2.0.8
+
+# --- 實驗追蹤 ---
+tensorboard==2.21.0
+wandb==0.28.1
+
+# --- HuggingFace datasets (若訓練用到 HF datasets lib) ---
+datasets==5.0.1
+accelerate==1.14.0
+
+# --- Jupyter / 互動開發 ---
+jupyterlab==4.6.2
+ipywidgets==8.1.8
+
+# ============================================================
+# 未包含於此檔的訓練依賴 (需另行安裝):
+# ============================================================
+#
+# SAM 3:
+#   AssociationHead 的訓練偽標籤由 SAM 3 產生 (見 train_association_head.py)。
+#   SAM 3 依賴重且安裝流程特殊，請依其官方文件 (facebookresearch/sam3)
+#   另行安裝；若使用已產生好的偽標籤 CSV，則可省略。
+#
+# ============================================================
