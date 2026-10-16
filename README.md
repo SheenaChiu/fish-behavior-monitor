@@ -10,7 +10,7 @@
 > - 多物件追蹤：**51.56 FPS**，較傳統 Hungarian 基線加速 1.25 倍
 > - 跨領域驗證：UCF101 **99.4%** (F1 0.99)、JHMDB **92.0%** accuracy (F1 0.91)；總參數量 40M，可訓練 18M
 
-[<video src="./assets/demo.mp4" autoplay loop muted playsinline></video>](https://github.com/user-attachments/assets/adace363-7aa3-4002-83ad-b4d3b02a8167)
+https://github.com/user-attachments/assets/adace363-7aa3-4002-83ad-b4d3b02a8167
 
 ---
 
