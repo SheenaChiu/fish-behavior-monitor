@@ -10,7 +10,7 @@
 > - 多物件追蹤：**51.56 FPS**，較傳統 Hungarian 基線加速 1.25 倍
 > - 跨領域驗證：UCF101 **99.4%** (F1 0.99)、JHMDB **92.0%** accuracy (F1 0.91)；總參數量 40M，可訓練 18M
 
-<video src="./assets/demo.mp4" autoplay loop muted playsinline></video>
+[<video src="./assets/demo.mp4" autoplay loop muted playsinline></video>](https://github.com/user-attachments/assets/adace363-7aa3-4002-83ad-b4d3b02a8167)
 
 ---
 
@@ -26,7 +26,9 @@
 
 本系統由一個凍結的 DINOv2-S/14 Vision Transformer 作為共享骨幹，單次 forward 的輸出同時供應三項下游任務：物件偵測、個體識別、行為分類。此設計避免傳統多模組系統於每個階段重複計算視覺特徵的開銷，並確保三項任務使用一致的語意表徵。
 
-![](./assets/整體架構)
+<p align="center">
+  <img src="assets/architecture.png" alt="Architecture" width="900">
+</p>
 
 Pipeline 分為五個 stage，可完整於單張 GPU 上執行：
 
