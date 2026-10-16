@@ -86,7 +86,7 @@ flowchart LR
 
 傳統基於外觀的 ReID 特徵直接使用偵測器的中間層輸出，但該特徵對偵測任務最佳化、未必具備個體區辨能力。本系統在 RF-DETR query embedding 之後接一個 2-layer MLP（Association Head），將 256 維特徵投影到 128 維 metric space，並以 InfoNCE 對比式學習訓練：
 
-同一條追蹤軌跡的兩幀特徵為 positive pair，批次內其他軌跡的特徵為負樣本（in-batch shuffled negatives，SimCLR / CLIP 風格）。訓練監督來自 SAM 3 產生的高信心度追蹤偽標籤，無須人工逐幀標註身分。
+同一條追蹤軌跡的兩幀特徵為 positive pair，批次內其他軌跡的特徵為負樣本（in-batch shuffled negatives，類SimCLR / CLIP 訓練方式）。訓練監督來自 SAM 3 產生的高信心度追蹤偽標籤，無須人工逐幀標註身分。
 
 訓練完成後，驗證集 positive–negative margin 從 0.531 收斂至 0.570，證實投影後的 metric space 具備個體區辨能力。詳見 [`association_head.py`](association_head.py) 與 [`train_association_head.py`](train_association_head.py)。
 
