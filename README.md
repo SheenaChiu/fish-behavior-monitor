@@ -70,7 +70,7 @@ flowchart LR
 - **物件層級特徵** — RF-DETR decoder 的 query embedding（256 維）同時供應偵測頭與個體識別
 - **時序運動特徵** — 相鄰 frame 的 query embedding 差分 $\Delta f_t = f_t - f_{t-1}$ 取代傳統光流
 
-為使 RF-DETR 的 DINOv2 內部表徵可被外部存取，原版骨幹經兩項修改：切換為非 windowed-attention 的純 DINOv2-S/14、並暴露 CLS token。詳見 [`rfdetr/MODIFICATIONS.md`](rfdetr/MODIFICATIONS.md)。
+為使 RF-DETR 的 DINOv2 內部表徵可被外部存取，原版骨幹經兩項修改：切換為非 windowed-attention 的純 DINOv2-S/14、新增 CLS token 的對外輸出介面。詳見 [`rfdetr/MODIFICATIONS.md`](rfdetr/MODIFICATIONS.md)。
 
 ### 全 GPU 多物件追蹤
 
