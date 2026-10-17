@@ -30,35 +30,17 @@ https://github.com/user-attachments/assets/adace363-7aa3-4002-83ad-b4d3b02a8167
   <img src="assets/architecture.png" alt="Architecture" width="900">
 </p>
 
-Pipeline 分為五個 stage，可完整於單張 GPU 上執行：
+完整 pipeline 可於單張 GPU 上執行：
 
-```mermaid
-flowchart LR
-    V[影片輸入] --> D[DINOv2-S/14<br/>共享骨幹]
-    D --> R[RF-DETR Decoder<br/>偵測頭]
-    D --> A[Association Head<br/>128維 Metric Embedding]
-    D --> C[CLS Token<br/>384維場景特徵]
+<p align="center">
+  <img src="assets/pipeline.png" alt="Pipeline" width="900">
+</p>
 
-    R --> T[GPU Tracker<br/>Iterative Greedy]
-    A --> T
+系統分為三個主要階段：
 
-    T --> F[904維時序特徵<br/>per track × 30 frames]
-    C --> F
-
-    F --> V2[4-layer ViT 分類器]
-    V2 --> O[活力等級<br/>High / Medium / Low]
-
-    T --> P[Peer Dissimilarity<br/>同儕差異度]
-    P --> O2[Rank-1 Outlier 預警]
-```
-
-各階段詳見 [`inference.py`](inference.py)：
-
-1. **Tracking** — RF-DETR 偵測 + GPU Tracker 關聯
-2. **Feature Extraction** — 每條 track 以 30-frame window 抽 904 維時序特徵
-3. **Classification** — ViT 分類器輸出 3 類 logits
-4. **Aggregation** — per-window 或 per-track 多數決
-5. **Output** — 預測 CSV、標註影片、Minority 個體影片（選用）
+1. **視訊物件感知** — 共享骨幹輸出通用視覺特徵，供下游的物件偵測、個體識別關聯頭、物件追蹤共用，一次 forward 完成全部計算
+2. **行為分類** — 由追蹤軌跡抽取 904 維時序特徵，GMM 無監督分群建立訓練偽標籤，ViT 分類器輸出活力等級 (High / Medium / Low)
+3. **多層次健康預警** — 整合條件式環境閾值、相對式群體分析、個體外觀差異度，產生活力比例預警與同儕外觀預警
 
 ---
 
@@ -114,14 +96,14 @@ $$\Delta f_t = f_t - f_{t-1}$$
 
 此設計使訓練資料得以**全自動產出**，部署到新場域時僅需跑一次分群即可建立標籤。詳見 [`build_pseudo_labeled_dataset.py`](build_pseudo_labeled_dataset.py)。
 
-### 同儕差異度預警
+### 多層次健康預警
 
-單一個體的「異常」是相對概念：在整群活力偏低的影片中，顯著活潑的個體才是異常。本系統並行提供兩種預警策略：
+ViT 輸出的活力分類僅是訊號來源，實際異常判斷由兩種角度整合：
 
-- **絕對判斷** — ViT 分類器直接輸出每條魚的活力等級
-- **相對判斷** — 對同片影片內每條魚計算其對其他個體的平均相似度，取 $d_i = 1 - \overline{\text{sim}}$ 作為差異度，差異度最高者（rank-1）即為該段影片的相對異常個體
+- **活力群體分析** — 當場域具備環境感測資料時，依投餵狀態與海溫查對應閾值表，判斷活力類別佔比是否偏離正常範圍；若環境資料缺失，則退而比較影片當下的活力類別佔比，將佔比最低者標記為相對異常族群
+- **個體同儕外觀差異度** — 對同片影片內的個體兩兩計算外觀相似度，與同儕相似度最低者即為相對異常個體。為避免每一片都無差別觸發警示，系統預先以場域歷史資料統計差異度分布，取第 90 與第 99 百分位作為「輕度」與「明顯」兩道警示門檻，確保只有真正偏離場域常態的個體才會被標記
 
-相對判斷機制以該場域歷史資料的 rank-1 差異度分布百分位（P90 作為輕度警示、P99 作為明顯警示）作為閾值，部署到新場域時僅需跑一次分布統計即可自動校準，無需人工調參。詳見 [`peer_anomaly_detection.py`](peer_anomaly_detection.py)。
+詳見 [`peer_anomaly_detection.py`](peer_anomaly_detection.py) 與 [`inference.py`](inference.py) 的 minority class 輸出。
 
 ---
 
