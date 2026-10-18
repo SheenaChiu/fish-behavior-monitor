@@ -1,6 +1,6 @@
-# 水下魚群個體行為辨識與活力異常即時預警系統。
+# fish-behavior-monitor
 
-採用以 DINOv2-S/14 為共享骨幹的**統一架構 (unified backbone framework)**，單一凍結模型同時服務偵測、追蹤、行為分類三項下游任務，於單張 GPU 上實現即時推論。
+水下魚群個體行為辨識與活力異常即時預警系統。採用以 DINOv2-S/14 為共享骨幹的**統一架構 (unified backbone framework)**，單一凍結模型同時服務偵測、追蹤、行為分類三項下游任務，於單張 GPU 上實現即時推論。
 
 本專案為國立臺灣海洋大學資訊工程研究所碩士論文〈*A Neural Network for Video Object Behavior Detection and Its Application on Underwater Fish School Health Monitoring*〉之公開實作。
 
