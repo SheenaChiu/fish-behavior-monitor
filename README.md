@@ -115,7 +115,7 @@ ViT 輸出的活力分類僅是訊號來源，實際異常判斷由兩種角度�
   <img src="assets/comparison.png" alt="Analysis" height="280">
   </p>
 
-詳見 [`peer_anomaly_detection.py`](peer_anomaly_detection.py) 與 [`inference.py`](inference.py) 的 minority class 輸出。
+詳見 [`peer_anomaly_detection.py`](peer_anomaly_detection.py) 與 [`inference.py`](inference.py)。
 
 ---
 
