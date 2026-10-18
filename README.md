@@ -103,7 +103,7 @@ ViT 輸出的活力分類僅是訊號來源，實際異常判斷由兩種角度�
   <img src="assets/condition.png" alt="Condition" height="330" style="margin-right: 20px;">
   </p>
   <p align="center">
-  <img src="assets/analysis.png" alt="Analysis" height="200">
+  <img src="assets/analysis.png" alt="Analysis" height="220">
   </p>
 - **個體同儕外觀差異度** — 對同片影片內的個體兩兩計算外觀相似度，與同儕相似度最低者即為相對異常個體。為避免每一片都無差別觸發警示，系統預先以場域歷史資料統計差異度分布，取第 90 與第 99 百分位作為「輕度」與「明顯」兩道警示門檻，確保只有真正偏離場域常態的個體才會被標記
   <p align="center">
