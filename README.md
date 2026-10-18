@@ -101,10 +101,16 @@ $$\Delta f_t = f_t - f_{t-1}$$
 ViT 輸出的活力分類僅是訊號來源，實際異常判斷由兩種角度整合：
 
 - **活力群體分析** — 當場域具備環境感測資料時，依投餵狀態與海溫查對應閾值表，判斷活力類別佔比是否偏離正常範圍；若環境資料缺失，則退而比較影片當下的活力類別佔比，將佔比最低者標記為相對異常族群
-  <p align="center">
-  <img src="assets/condition.png" width="45%" /> 
-  <img src="assets/analysis.png" width="45%" />
-  </p>
+  <table style="border: none; width: 100%; text-align: center;">
+  <tr>
+    <td style="border: none; vertical-align: middle; padding: 40px 2%;">
+      <img src="assets/condition.png" alt="Condition" width="100%">
+    </td>
+    <td style="border: none; vertical-align: middle; padding: 40px 2%;">
+      <img src="assets/analysis.png" alt="Analysis" width="100%">
+    </td>
+  </tr>
+</table>
 - **個體同儕外觀差異度** — 對同片影片內的個體兩兩計算外觀相似度，與同儕相似度最低者即為相對異常個體。為避免每一片都無差別觸發警示，系統預先以場域歷史資料統計差異度分布，取第 90 與第 99 百分位作為「輕度」與「明顯」兩道警示門檻，確保只有真正偏離場域常態的個體才會被標記
   <p align="center">
   <img src="assets/condition_2.png" width="45%" /> 
