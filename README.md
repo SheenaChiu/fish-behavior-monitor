@@ -30,7 +30,7 @@ https://github.com/user-attachments/assets/adace363-7aa3-4002-83ad-b4d3b02a8167
   <img src="assets/architecture.png" alt="Architecture" width="700">
 </p>
 
-完整 pipeline 可於單張 GPU 上執行：
+完整 pipeline 如下所示：
 
 <p align="center">
   <img src="assets/pipeline.png" alt="Pipeline" width="700">
