@@ -27,13 +27,13 @@ https://github.com/user-attachments/assets/adace363-7aa3-4002-83ad-b4d3b02a8167
 本系統由一個凍結的 DINOv2-S/14 Vision Transformer 作為共享骨幹，單次 forward 的輸出同時供應三項下游任務：物件偵測、個體識別、行為分類。此設計避免傳統多模組系統於每個階段重複計算視覺特徵的開銷，並確保三項任務使用一致的語意表徵。
 
 <p align="center">
-  <img src="assets/architecture.png" alt="Architecture" width="900">
+  <img src="assets/architecture.png" alt="Architecture" height="250">
 </p>
 
 完整 pipeline 可於單張 GPU 上執行：
 
 <p align="center">
-  <img src="assets/pipeline.png" alt="Pipeline" width="900">
+  <img src="assets/pipeline.png" alt="Pipeline" height="200">
 </p>
 
 系統分為三個主要階段：
@@ -104,12 +104,12 @@ ViT 輸出的活力分類僅是訊號來源，實際異常判斷由兩種角度�
   <p align="center">
   <img src="assets/condition.png" alt="Condition" height="300" style="margin-right: 20px;">
   <img src="assets/analysis.png" alt="Analysis" height="130">
-</p>
+  </p>
 - **個體同儕外觀差異度** — 對同片影片內的個體兩兩計算外觀相似度，與同儕相似度最低者即為相對異常個體。為避免每一片都無差別觸發警示，系統預先以場域歷史資料統計差異度分布，取第 90 與第 99 百分位作為「輕度」與「明顯」兩道警示門檻，確保只有真正偏離場域常態的個體才會被標記
   <p align="center">
-  <img src="assets/condition_2.png" alt="Condition" height="130" style="margin-right: 20px;">
-  <img src="assets/comparison.png" alt="Analysis" height="300">
-</p>
+  <img src="assets/condition_2.png" alt="Condition" height="90" style="margin-right: 20px;">
+  <img src="assets/comparison.png" alt="Analysis" height="250">
+  </p>
 
 詳見 [`peer_anomaly_detection.py`](peer_anomaly_detection.py) 與 [`inference.py`](inference.py) 的 minority class 輸出。
 
