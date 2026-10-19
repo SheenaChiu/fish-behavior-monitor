@@ -140,7 +140,7 @@ ph2021 場域測試集之各活力等級詳細結果：
 
 | 方法 | 配對演算法 | 執行裝置 | 推論速度 |
 |---|---|---|---:|
-| Baseline (ByteTrack + Hungarian + 256-d ReID) | Hungarian | GPU + CPU | 41.40 FPS |
+| Baseline (Hungarian + 256-d ReID) | Hungarian | GPU + CPU | 41.40 FPS |
 | **本方法 (Iterative Greedy + 128-d learned ReID)** | **Iterative Greedy** | **GPU only** | **51.56 FPS** |
 
 ### 跨領域驗證
