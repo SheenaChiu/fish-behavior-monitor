@@ -240,7 +240,7 @@ python inference.py --video sample.mp4 ...
 python train_detector.py --dataset_dir output/coco_fish ...
 
 # 2. 以 SAM 3 產生高信心軌跡作為偽標籤
-#    (需另行安裝 SAM 3，或直接下載現成偽標籤)
+#    (需另行安裝 SAM 3 產生偽標籤，格式可參考資料集)
 #    https://huggingface.co/datasets/SheenaChiu/fish-behavior-pseudo-labels
 
 # 3. 訓練 Association Head
@@ -292,7 +292,7 @@ fish-behavior-monitor/
 | 類型 | 內容 | 連結 |
 |---|---|---|
 | 模型權重 | 偵測器、Association Head、ViT 分類器、推論用 stats | [SheenaChiu/fish-behavior-monitor](https://huggingface.co/SheenaChiu/fish-behavior-monitor) |
-| 訓練偽標籤 | SAM 3 產生的高信心魚隻軌跡 CSV | 因資料所有權因素未釋出 |
+| 訓練偽標籤 | SAM 3 產生的高信心魚隻軌跡 CSV | [SheenaChiu/fish-behavior-monitor](https://huggingface.co/SheenaChiu/fish-behavior-pseudo-labels) |
 | 原始影片 | 於澎湖養殖場及海大水生中心拍攝之水下影像資料集  | 因資料所有權因素未釋出 |
 
 原始水下影片蒐集自：澎湖天和養殖場 (ph2021)、海大水生中心 (ntou2022)。欲重新訓練請使用自有影片，依訓練流程處理。
