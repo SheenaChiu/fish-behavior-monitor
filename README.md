@@ -151,9 +151,9 @@ ph2021 場域測試集之各活力等級詳細結果：
 |---|---:|---:|---:|
 | UCF101 | 101 | 99.4% | 0.99 |
 | JHMDB | 21 | 92.0% | 0.91 |
-<p align="center"> <img src="assets/ucf101_demo.png" alt="UCF101 action detection and classification examples" height="220"> </p>
 
 結果證實本架構不侷限於水下場景，可泛化至通用的視訊物件行為辨識任務。
+<p align="center"> <img src="assets/ucf101_demo.png" alt="UCF101 action detection and classification examples" height="220"> </p>
 
 ---
 
