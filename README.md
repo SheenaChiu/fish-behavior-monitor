@@ -292,8 +292,8 @@ fish-behavior-monitor/
 | 類型 | 內容 | 連結 |
 |---|---|---|
 | 模型權重 | 偵測器、Association Head、ViT 分類器、推論用 stats | [SheenaChiu/fish-behavior-monitor](https://huggingface.co/SheenaChiu/fish-behavior-monitor) |
-| 訓練偽標籤 | SAM 3 產生的高信心追蹤 CSV | [SheenaChiu/fish-behavior-pseudo-labels](https://huggingface.co/datasets/SheenaChiu/fish-behavior-pseudo-labels) |
-| 原始影片 | *不公開* | 因資料所有權因素未釋出 |
+| 訓練偽標籤 | SAM 3 產生的高信心魚隻軌跡 CSV | 因資料所有權因素未釋出 |
+| 原始影片 | 於澎湖養殖場及海大水生中心拍攝之水下影像資料集  | 因資料所有權因素未釋出 |
 
 原始水下影片蒐集自：澎湖天和養殖場 (ph2021)、海大水生中心 (ntou2022)。欲重新訓練請使用自有影片，依訓練流程處理。
 
